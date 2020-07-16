@@ -1,13 +1,13 @@
 #!/bin/bash
 set -e
 
-STEPS=3
+STEPS=4
 PORT=9000
 
 function PrintBox () {
-	echo '=================================================='
+	echo '============================================================'
 	echo $1
-	echo '=================================================='
+	echo '============================================================'
 	echo ''
 }
 
@@ -35,12 +35,21 @@ PrintBox "Step 2 of ${STEPS}: Installing symfony"
 if [[ ! -f "/root/.symfony/bin/symfony" ]]; then
 	php -r "copy('https://get.symfony.com/cli/installer', 'installer.sh');"
 	bash installer.sh
-	/root/.symfony/bin/symfony new --full prym_workshop_01
+	if [[ ! -d prym_workshop_01 ]]; then
+		/root/.symfony/bin/symfony new --full prym_workshop_01
+		chmod 0777 prym_workshop_01/src -R
+	fi
 fi
 
 
-echo "Step 3 of ${STEPS}: Running Server on http://localhost:8069"
+if [[ $(HasInstalled ip) == "" ]]; then
+	apt install -y iproute2
+	IP=$(ip addr | grep eth | grep inet | awk '{ print $2 }' | sed 's/\/[0-9][0-9]//' )
+fi
 
-cd prym_workshop_01
-php -S localhost:${PORT}
+PrintBox "Step 4 of ${STEPS}: Running Server on http://${IP}:${PORT}"
+
+
+cd prym_workshop_01/public
+php -S ${IP}:${PORT}
 
