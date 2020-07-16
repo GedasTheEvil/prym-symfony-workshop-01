@@ -27,14 +27,15 @@ fi
 
 PrintBox "Step 2 of ${STEPS}: Installing symfony"
 
-if [[ ! -f "/root/.symfony/bin/symfony" ]]; then
+if [[ $(HasInstalled symfony) == "" ]]; then
 	php -r "copy('https://get.symfony.com/cli/installer', 'installer.sh');"
 	bash installer.sh
 	mv /root/.symfony/bin/symfony /usr/local/bin/symfony
 
 	if [[ ! -d prym_workshop_01 ]]; then
-		symfony new --full prym_workshop_01 --version=4.1
+		symfony new --full prym_workshop_01 --version=4.2
 		chmod 0777 prym_workshop_01/src -R
+		chmod 0777 prym_workshop_01/config -R
 	fi
 fi
 
