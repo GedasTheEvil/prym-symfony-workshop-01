@@ -1,0 +1,4 @@
+installer.sh
+prym_workshop_01/*
+!prym_workshop_01/src
+
