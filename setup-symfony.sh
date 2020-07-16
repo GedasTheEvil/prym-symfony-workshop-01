@@ -15,11 +15,6 @@ function HasInstalled () {
 	whereis $1 | awk '{ print $2 }'
 }
 
-if [[ ! -f composer.phar ]]; then
-	PrintBox "Step 0 of ${STEPS}: Getting composer"
-	php -r "copy('https://getcomposer.org/composer-stable.phar', 'composer.phar');" 
-fi
-
 PrintBox "Step 1 of ${STEPS}: Installing git"
 
 if [[ $(HasInstalled git) == "" ]]; then
@@ -35,8 +30,10 @@ PrintBox "Step 2 of ${STEPS}: Installing symfony"
 if [[ ! -f "/root/.symfony/bin/symfony" ]]; then
 	php -r "copy('https://get.symfony.com/cli/installer', 'installer.sh');"
 	bash installer.sh
+	mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+
 	if [[ ! -d prym_workshop_01 ]]; then
-		/root/.symfony/bin/symfony new --full prym_workshop_01
+		symfony new --full prym_workshop_01 --version=4.1
 		chmod 0777 prym_workshop_01/src -R
 	fi
 fi
