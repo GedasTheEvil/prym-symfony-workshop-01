@@ -22,6 +22,7 @@ Then, inside the docker container, run ./setup-symfony.sh
 * Intro to bundles
 * Creating an API endpoint: route, controller, action, response
 * Defining services
+* A few words about the guzzle client
 
 ### Prym Project Specific
 * Product expander
