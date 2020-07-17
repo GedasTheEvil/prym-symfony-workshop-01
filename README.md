@@ -15,6 +15,13 @@ Then, inside the docker container, run ./setup-symfony.sh
 
 ## Agenda
 
+### General
 * What is PHP
 * What is MVP
+* Intro to Twig
 * Creating an API endpoint: route, controller, action, response
+* Defining services
+
+### Prym Project Specific
+* Product expander
+* Cart expander
