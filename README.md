@@ -11,3 +11,10 @@ docker run --rm -it --name prym-symfony-php \
 
 Then, inside the docker container, run ./setup-symfony.sh
 
+**Note:** If this does not work, we will do the workshop on prym-frontastic
+
+## Agenda
+
+* What is PHP
+* What is MVP
+* Creating an API endpoint: route, controller, action, response
