@@ -28,3 +28,4 @@ Then, inside the docker container, run ./setup-symfony.sh
 ### Prym Project Specific
 * Product expander
 * Cart expander
+* Decorators vs Expanders
