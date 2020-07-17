@@ -18,6 +18,7 @@ Then, inside the docker container, run ./setup-symfony.sh
 ### General
 * What is PHP
 * What is MVP
+* What is composer
 * Intro to Twig
 * Intro to bundles
 * Creating an API endpoint: route, controller, action, response
